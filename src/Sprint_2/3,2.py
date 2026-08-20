@@ -48,3 +48,25 @@ texto_decodificado = decode(ids, vocab)
 print("\nFrase original:", frase_teste)
 print("Token IDs:", ids)
 print("Texto decodificado:", texto_decodificado)
+
+tokens_especiais = ["<|unk|>", "<|endoftext|>"]
+vocab_estendido = palavras_unicas + tokens_especiais
+vocab = {token: id for id, token in enumerate(vocab_estendido)}
+ 
+print("\nNovo tamanho do vocabulário:", len(vocab))
+print("ID de <|unk|>:", vocab["<|unk|>"])
+print("ID de <|endoftext|>:", vocab["<|endoftext|>"])
+ 
+ 
+def encode_v2(texto, vocab):
+    tokens = tokenizar(texto)
+    return [vocab[token] if token in vocab else vocab["<|unk|>"] for token in tokens]
+ 
+ 
+frase_fora_do_vocab = "Trevizol e pedro topzera demais"
+ids = encode_v2(frase_fora_do_vocab, vocab)
+texto_decodificado = decode(ids, vocab)
+ 
+print("\nFrase original:", frase_fora_do_vocab)
+print("Token IDs:", ids)
+print("Texto decodificado:", texto_decodificado)
