@@ -15,7 +15,12 @@ frases_teste = [
 for frase in frases_teste:
     print(frase, "->", tokenizar(frase))
 
-with open("data/the-verdict.txt", "r", encoding="utf-8") as f:
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parents[2]  # sobe de src/Sprint_2/ até a raiz do repositório
+caminho_arquivo = BASE_DIR / "data" / "the-verdict.txt"
+
+with open(caminho_arquivo, "r", encoding="utf-8") as f:
     texto_completo = f.read()
 
 tokens = tokenizar(texto_completo)
