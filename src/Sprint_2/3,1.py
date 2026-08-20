@@ -14,3 +14,10 @@ frases_teste = [
 
 for frase in frases_teste:
     print(frase, "->", tokenizar(frase))
+
+with open("data/the-verdict.txt", "r", encoding="utf-8") as f:
+    texto_completo = f.read()
+
+tokens = tokenizar(texto_completo)
+print("\nTotal de tokens no corpus:", len(tokens))
+print("Primeiros 30 tokens:", tokens[:30])
