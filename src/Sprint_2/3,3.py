@@ -38,3 +38,21 @@ for i in range(1, context_size + 1):
     contexto = enc_sample[:i]
     esperado = enc_sample[i]
     print(tokenizer.decode(contexto), "---->", tokenizer.decode([esperado]))
+
+def gerar_pares(token_ids, max_length, stride):
+    entradas = []
+    alvos = []
+    for i in range(0, len(token_ids) - max_length, stride):
+        entrada = token_ids[i:i + max_length]
+        alvo = token_ids[i + 1:i + max_length + 1]
+        entradas.append(entrada)
+        alvos.append(alvo)
+    return entradas, alvos
+
+
+entradas, alvos = gerar_pares(enc_text, max_length=4, stride=1)
+
+print(f"\nTotal de amostras geradas: {len(entradas)}")
+print("Primeiras 3 amostras:")
+for i in range(3):
+    print(f"  entrada: {entradas[i]}  ->  alvo: {alvos[i]}")
