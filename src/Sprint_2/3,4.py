@@ -8,4 +8,9 @@ print(camada_exemplo.weight)
 print("\nVetor do Token ID 3:")
 print(camada_exemplo(torch.tensor([3])))
 
-
+import torch
+torch.manual_seed(123)
+vocab_size = 50257 # tamanho do vocabulario do GPT-2 (BPE)
+output_dim = 256 # dimensao escolhida para cada vetor de embedding
+camada_embedding = torch.nn.Embedding(vocab_size, output_dim)
+print("Formato da tabela de embeddings:", camada_embedding.weight.shape)
