@@ -26,3 +26,15 @@ y = enc_sample[1:context_size + 1]
 
 print("Entrada (x):", x)
 print("Alvo    (y):", y)
+
+print()
+for i in range(1, context_size + 1):
+    contexto = enc_sample[:i]
+    esperado = enc_sample[i]
+    print(contexto, "---->", esperado)
+
+print()
+for i in range(1, context_size + 1):
+    contexto = enc_sample[:i]
+    esperado = enc_sample[i]
+    print(tokenizer.decode(contexto), "---->", tokenizer.decode([esperado]))
