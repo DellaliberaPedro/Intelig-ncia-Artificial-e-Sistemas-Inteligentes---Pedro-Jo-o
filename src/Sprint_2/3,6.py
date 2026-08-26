@@ -33,3 +33,29 @@ with open(BASE_DIR / "data" / "the-verdict.txt", "r", encoding="utf-8") as f:
 dataset_teste = GPTDatasetV1(texto_completo, tokenizer, max_length=4, stride=1)
 print("Total de amostras no dataset:", len(dataset_teste))
 print("Primeira amostra (entrada, alvo):", dataset_teste[0])
+
+from torch.utils.data import DataLoader
+
+
+def create_dataloader_v1(txt, batch_size=4, max_length=256,
+                          stride=128, shuffle=True, drop_last=True,
+                          num_workers=0):
+    tokenizer = tiktoken.get_encoding("gpt2")
+    dataset = GPTDatasetV1(txt, tokenizer, max_length, stride)
+    dataloader = DataLoader(
+        dataset, batch_size=batch_size, shuffle=shuffle,
+        drop_last=drop_last, num_workers=num_workers
+    )
+    return dataloader
+
+
+dataloader = create_dataloader_v1(
+    texto_completo, batch_size=8, max_length=4, stride=4, shuffle=False
+)
+
+data_iter = iter(dataloader)
+entradas, alvos = next(data_iter)
+
+print("Formato das entradas (lote):", entradas.shape)
+print("Formato dos alvos (lote):", alvos.shape)
+print("\nPrimeiro lote de entradas:\n", entradas)
