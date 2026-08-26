@@ -59,3 +59,21 @@ entradas, alvos = next(data_iter)
 print("Formato das entradas (lote):", entradas.shape)
 print("Formato dos alvos (lote):", alvos.shape)
 print("\nPrimeiro lote de entradas:\n", entradas)
+
+torch.manual_seed(123)
+
+vocab_size = 50257
+output_dim = 256
+context_length = 4
+
+camada_embedding = torch.nn.Embedding(vocab_size, output_dim)
+camada_posicional = torch.nn.Embedding(context_length, output_dim)
+
+token_embeddings = camada_embedding(entradas)
+pos_embeddings = camada_posicional(torch.arange(context_length))
+
+input_embeddings = token_embeddings + pos_embeddings
+
+print("Formato token_embeddings (lote):", token_embeddings.shape)
+print("Formato pos_embeddings:", pos_embeddings.shape)
+print("Formato final (lote pronto para o Transformer):", input_embeddings.shape)
