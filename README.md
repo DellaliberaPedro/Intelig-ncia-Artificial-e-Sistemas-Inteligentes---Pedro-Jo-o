@@ -11,7 +11,7 @@ Este repositório armazena todo o desenvolvimento, experimentos, documentação 
 - **`/glossario`**: Termos técnicos, conceitos fundamentais e resumos teóricos dos capítulos estudados.
 - **`/notebooks`**: Jupyter Notebooks com experimentos, validação de ambiente e testes de código.
 - **`/src`**: Código-fonte das implementações modulares da arquitetura do LLM.
-- **`/relatorios`**: Entregas e relatórios de resultados de cada Sprint.
+- **`/relatório`**: Entregas e relatórios de resultados de cada Sprint.
 
 ---
 
@@ -53,6 +53,9 @@ Se a versão do PyTorch e o tensor forem exibidos sem erros, o ambiente está pr
 
 ## 🚀 Sprints e Entregas
 - **Sprint 0:** Configuração e validação do ambiente PyTorch, estruturação do repositório e Glossário do Capítulo 1.
+- **Sprint 2:** Pipeline de preparação de dados (tokenização, BPE, embeddings, DataLoader) e Glossário do Capítulo 2.
+- **Sprint 3:** Mecanismos de atenção (autoatenção, atenção causal, multi-head attention) e Glossário do Capítulo 3.
+- **Sprint 4:** Arquitetura GPT completa — Transformer Block, modelo GPT, geração de texto autorregressiva, experimentação de hiperparâmetros e Glossário do Capítulo 4.
 
-## 📚 Referência bibliográcsfica
+## 📚 Referência bibliográfica
 RASCHKA, Sebastian. *Build a Large Language Model (From Scratch)*. Manning Publications, 2024.
