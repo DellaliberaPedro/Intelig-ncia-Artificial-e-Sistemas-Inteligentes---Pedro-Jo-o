@@ -1,3 +1,7 @@
 __pycache__/
 *.pyc
 .venv/
+
+# Sprint 5 - pesos do modelo e resultados gerados pelos scripts
+*.pth
+relatório/Sprint 5/resultados/
